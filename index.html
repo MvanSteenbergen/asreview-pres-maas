@@ -12,6 +12,7 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
 	</head>
 	<body>
 		<div class="reveal">
@@ -24,7 +25,7 @@
 					<h2>Hi, I'm Maas!👋</h2>	
 				</section>
 				<section>
-					<h3>Goal 1: compare ways to calculate the IRR for the FORAS project</h3>
+					<h3>Goal 1: compare ways to calculate the IRR for ASReview</h3>
 						<dl><dt>Inter-rater reliability</dt><dd>A measure of the agreement between two or more raters or observers when assessing subjects</dd></dl>
 				</section>
 				<section>
@@ -39,36 +40,47 @@
 					<h3>ASReview IRR plug-in</h3>
 					<ul>
 						<li>An extension for ASReview that creates automatic reports on the IRR</li>
+						<li>These automatic reports are implemented using R Markdown</li>
+						<li></li>
 					</ul> 
-
 				</section>
 				<section>
 					<h3>The data pipeline</h3>
 					<ol>
 						<li>Extract relevant information from two ASReview output files</li>
 						<li>Calculates many statistics of agreement and outputs these as a <code>csv</code></li>
-						<li>Outputs a rater summary, a visual summary, and a table</li>
+						<li>Outputs a tabular summary, a visual summary, and even a written summary fully automatically</li>
 					</ol>
 				</section>
 				<section>
-					<ol>
-						<li></li>
-					</ol>
+					<h1>Let's take a look!👀</h1>
 				</section>
 				<section>
-					<h3>Is this useable?</h3>
+					<h3>New features?</h3>
 					<ul>
-						<li><em>Yes!</em> The set-up is extendible and the R Markdown script is clear</li>
-						<p>Note: Missing data is currently assumed automatically rated as irrelevant!</p>
+						<li>Add new, modern ways to calculate the IRR (that take into account missing data)</li>
+						<li>Upgrade the code a bit (E.g., use <code>renv</code>) </li>
+						<li>Make it interactive! E.g., a webapp to compare different ways of calculating the IRR before implementation (<code>Shiny</code>?)</li>
+						<li>Integrate calculation <em>within</em> ASReview somehow</li>
 					</ul>
 				</section>
 				<section>
-					<h3>Room for improvement</h3>
+					<h3>More on those new ways</h3>
 					<ul>
-						<li>Add new ways to calculate the IRR</li>
-						<li>Upgrade the code's stability (E.g., use <code>renv</code>, integrate testing) </li>
-						<li>Interactive webapp to compare different ways of calculating the IRR before implementation (<code>Shiny</code>?)</li>
-						<li>Integrate calculation <em>within</em> ASReview instead of seperately</li>
+						<li>Current implementation uses Cohen's kappa:
+						\[
+							\kappa = (p_o\ –\ p_e) / (1\ –\ p_e),
+						\]
+						<ul>
+						<li>$p_o$ is the relative observed agreement among raters</li> 
+						<li>$p_e$ is the hypothetical probability of chance agreement.</li></ul></li>
+					</ul>
+				</section>
+				<section>
+						<h3>Of course, there is room for improvement:</h3>
+					<ul>
+						<li>What about missing data, for example?</li>
+						<li>I will read into and compare five other methods to see what works best</li>
 					</ul>
 				</section>
 			</div>
@@ -78,6 +90,7 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -86,7 +99,7 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
 			});
 		</script>
 	</body>
